@@ -49,7 +49,8 @@ JavaScript
 The other half of our plugin is this basic JavaScript wrapper found in `assets/www/helloworld.js`:
 
 	var hello = function(win, fail) {
-		PluginManager.addService("HelloWorld","com.phonegap.HelloWorldPlugin.HelloWorld");
+		if (window['HelloWorld'] == undefined)
+			PluginManager.addService("HelloWorld","com.phonegap.HelloWorldPlugin.HelloWorld");
 		PhoneGap.execAsync(win, fail, "HelloWorld", "sayHello", []);
 	};
 
